@@ -64,6 +64,7 @@ istio/samples/bookinfo/networking/bookinfo-gateway.yaml
 ```bash
 kubectl apply -f samples/addons/prometheus.yaml
 kubectl apply -f samples/addons/kiali.yaml
+kubectl apply -f samples/addons/grafana.yaml
 ```
 ## 3. Deploy the Bookinfo Demo & VirtualService
 
