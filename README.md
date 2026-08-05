@@ -40,7 +40,7 @@ Run the automated installation script in your terminal:
 curl -L https://istio.io/downloadIstio | sh
 ```
 
-Change into the newly created version directory (e.g., cd istio-1.30.0):cd istio-*
+Change into the newly created version directory (e.g., cd istio-x)
 
 Add the bin directory containing istioctl to your system path: 
 
@@ -52,10 +52,6 @@ export PATH=$PWD/bin:$PATH
 istioctl install --set profile=demo -y
 ```
 Apply the official Kiali addon and Prometheus dashboards from the Istio installation directory:
-
-```bash
-git clone https://github.com/istio/istio.git
-```
 
 YAML: 
 ```bash
