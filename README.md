@@ -34,6 +34,20 @@ kind create cluster --name istio-mesh --config kind-config.yaml
 
 Download and extract istioctl, then install Istio using the demo profile which includes components like Prometheus and tracing support:
 
+Run the automated installation script in your terminal: 
+
+```bash
+curl -L https://istio.io/downloadIstio | sh
+```
+
+Change into the newly created version directory (e.g., cd istio-1.30.0):cd istio-*
+
+Add the bin directory containing istioctl to your system path: 
+
+```bash
+export PATH=$PWD/bin:$PATH
+```
+
 ```bash
 istioctl install --set profile=demo -y
 ```
