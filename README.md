@@ -9,6 +9,8 @@ To run Istio and Kiali on a local Kind (Kubernetes in Docker) cluster on macOS w
 
 ## 1. Create Kind Cluster on macOS
 
+Create a cluster configuration file named kind-config.yaml to map HTTP/HTTPS ports from your Mac to the Docker container node
+
 ```bash
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
