@@ -38,6 +38,18 @@ istioctl install --set profile=demo -y
 Apply the official Kiali addon and Prometheus dashboards from the Istio installation directory:
 
 ```bash
+git clone https://github.com/istio/istio.git
+```
+
+YAML: 
+```bash
+istio/samples/addons/prometheus.yaml
+istio/samples/addons/kiali.yaml
+istio/samples/bookinfo/platform/kube/bookinfo.yaml
+istio/samples/bookinfo/networking/bookinfo-gateway.yaml
+```
+
+```bash
 kubectl apply -f samples/addons/prometheus.yaml
 kubectl apply -f samples/addons/kiali.yaml
 ```
@@ -53,7 +65,6 @@ Deploy the Bookinfo sample application and tie it to an Istio Gateway and Virtua
 ```bash
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n bookinfo
 kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml -n bookinfo
-
 ```
 
 ## 4. Access Kiali and Generate Traffic
