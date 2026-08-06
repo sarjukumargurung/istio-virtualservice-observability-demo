@@ -73,11 +73,56 @@ kubectl create namespace bookinfo
 kubectl label namespace bookinfo istio-injection=enabled
 ```
 
+```bash
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+```
+
+Confirm all services and pods are correctly defined and running:
+
+```bash
+$ kubectl get services
+NAME          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+details       ClusterIP   10.0.0.31    <none>        9080/TCP   6m
+kubernetes    ClusterIP   10.0.0.1     <none>        443/TCP    7d
+productpage   ClusterIP   10.0.0.120   <none>        9080/TCP   6m
+ratings       ClusterIP   10.0.0.15    <none>        9080/TCP   6m
+reviews       ClusterIP   10.0.0.170   <none>        9080/TCP   6m
+
+and
+
+$ kubectl get pods
+NAME                             READY     STATUS    RESTARTS   AGE
+details-v1-1520924117-48z17      2/2       Running   0          6m
+productpage-v1-560495357-jk1lz   2/2       Running   0          6m
+ratings-v1-734492171-rnr5l       2/2       Running   0          6m
+reviews-v1-874083890-f0qf0       2/2       Running   0          6m
+reviews-v2-1343845940-b34q5      2/2       Running   0          6m
+reviews-v3-1813607990-8ch52      2/2       Running   0          6m
+```
+
+To confirm that the Bookinfo application is running, send a request to it by a curl command from some pod, for example from ratings:
+
+```bash
+kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
+```
+
+Now that the Bookinfo services are up and running, you need to make the application accessible from outside of your Kubernetes cluster, e.g., from a browser. A gateway is used for this purpose.
+
+Create a gateway for the Bookinfo application:
+
 Deploy the Bookinfo sample application and tie it to an Istio Gateway and VirtualService configuration:
 
 ```bash
-kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n bookinfo
-kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml -n bookinfo
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+gateway.networking.istio.io/bookinfo-gateway created
+virtualservice.networking.istio.io/bookinfo created
+```
+Confirm the gateway has been created:
+
+```bash
+$ kubectl get gateway
+NAME               AGE
+bookinfo-gateway   32s
 ```
 
 ## 4. Access Kiali and Generate Traffic
