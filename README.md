@@ -75,6 +75,19 @@ kubectl label namespace bookinfo istio-injection=enabled
 
 ```bash
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+service/details created
+serviceaccount/bookinfo-details created
+deployment.apps/details-v1 created
+service/ratings created
+serviceaccount/bookinfo-ratings created
+deployment.apps/ratings-v1 created
+service/reviews created
+serviceaccount/bookinfo-reviews created
+deployment.apps/reviews-v1 created
+deployment.apps/reviews-v2 created
+deployment.apps/reviews-v3 created
+service/productpage created
+serviceaccount/bookinfo-productpage created
 ```
 
 Confirm all services and pods are correctly defined and running:
