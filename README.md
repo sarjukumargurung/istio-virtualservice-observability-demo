@@ -143,10 +143,10 @@ bookinfo-gateway   32s
 istioctl dashboard kiali
 ```
 
-Generate incoming traffic to populate the Kiali service graph by running a continuous curl command against your local gateway endpoint or opening http://localhost/productpage if your gateway maps to port 80
+Generate incoming traffic to populate the Kiali service graph by running a continuous curl command against your local gateway endpoint or opening http://localhost:9080/productpage if your gateway maps to port 80
 
 ```bash
-curl -s http://localhost/productpage > /dev/null
+curl -s http://localhost:9080/productpage > /dev/null
 ```
 
 ## 5. Configure traffic splitting in Bookinfo Demo 
@@ -213,7 +213,17 @@ kubectl apply -f reviews-traffic-split.yaml
 Send 50 rapid requests in your terminal to see the weighted distribution take effect:
 
 ```bash
-for i in {1..50}; do curl -s http://localhost/productpage | grep -o "color="; done
+for i in {1..50}; do curl -s http://localhost:9080/productpage | grep -o "color="; done
 ```
 
+Steps to Port-Forward Bookinfo
+
+```bash
+kubectl port-forward svc/productpage 9080:9080
+```
+View / Open the page
+
+```bash
+http://localhost:9080/productpage
+```
 Open your Kiali Graph dashboard (istioctl dashboard kiali). Make sure you switch the graph edge display dropdown from "No edge labels" to Traffic Distribution. You will visually see the traffic line splitting into roughly 80% toward reviews-v1 and 20% toward reviews-v2
