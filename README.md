@@ -1,5 +1,14 @@
 # istio-virtualservice-observability-demo
 
+## Demo :1 - Overview 
+
+<img width="1400" height="708" alt="image" src="https://github.com/user-attachments/assets/30b6e4be-ad17-4afb-8693-125b026a2851" />
+
+## Demo :2 - Traffic Graph - End to End Observability of highly scalable Kubernetes micro-services - Service Mech and Canary deployment
+
+<img width="1420" height="775" alt="image" src="https://github.com/user-attachments/assets/795bd761-dcab-4ee7-bcc2-7b0a3bcaaaac" />
+
+
 To run Istio and Kiali on a local Kind (Kubernetes in Docker) cluster on macOS with an active VirtualService demo, create a Kind cluster with mapped ports 80 and 443, install Istio with its demo profile and Kiali addon, deploy a sample app with a Gateway and VirtualService, and open the dashboard
 
 ## Prerequisites
