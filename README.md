@@ -4,7 +4,7 @@
 
 <img width="1400" height="708" alt="image" src="https://github.com/user-attachments/assets/30b6e4be-ad17-4afb-8693-125b026a2851" />
 
-## Demo :2 - Traffic Graph - End to End Observability of highly scalable Kubernetes micro-services - Service Mech and Canary deployment
+## Demo :2 - Traffic Graph - End to End Observability of highly scalable Kubernetes micro-services - Service Mesh and Canary deployment
 
 <img width="1420" height="775" alt="image" src="https://github.com/user-attachments/assets/795bd761-dcab-4ee7-bcc2-7b0a3bcaaaac" />
 
